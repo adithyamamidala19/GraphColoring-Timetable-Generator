@@ -4,95 +4,112 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%; /* Pure Pitch Black */
-    --foreground: 210 20% 98%;
-
-    --card: 240 10% 4%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 240 10% 3%;
-    --popover-foreground: 210 20% 98%;
-
-    --primary: 158 100% 48%; /* Cyber Emerald #10b981 */
-    --primary-foreground: 0 0% 0%;
-
-    --secondary: 265 89% 66%; /* Electric Neon Violet */
-    --secondary-foreground: 210 20% 98%;
-
-    --muted: 240 8% 10%;
-    --muted-foreground: 240 5% 65%;
-
-    --accent: 265 89% 66%;
-    --accent-foreground: 210 20% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-
-    --border: 240 6% 14%;
-    --input: 240 6% 14%;
-    --ring: 158 100% 48%;
-
-    --radius: 0.85rem;
+    --bg-ivory: #FAF7F0;
+    --surface: #FFFFFF;
+    --subtle-surface: #F3EFE4;
+    --border: #E8E2D2;
+    --text-primary: #14201B;
+    --text-muted: #5B6B63;
+    --brand-primary: #10B981;
+    --brand-deep: #065F46;
+    --brand-tint: #D1FAE5;
   }
-}
 
-@layer base {
   * {
-    @apply border-border;
+    border-color: #E8E2D2;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
   body {
-    @apply bg-black text-foreground font-sans antialiased selection:bg-primary/30 selection:text-primary;
-    background-color: #000000 !important;
+    background-color: #FAF7F0;
+    color: #14201B;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Accessible focus ring */
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #10B981;
   }
 }
 
-/* Custom Font Utilities */
-.font-neuton {
-  font-family: 'Neuton', serif;
+/* Fluid Heading Typography (clamp 44px to 96px) */
+.fluid-hero-headline {
+  font-size: clamp(2.75rem, 6vw + 1rem, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
-.font-cursive {
-  font-family: 'Caveat', cursive;
+.fluid-section-headline {
+  font-size: clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
 }
 
-/* Dark Pattern Backgrounds Inspired by User Images 4 & 5 */
-.bg-grid-kinetic {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
+/* Slot Color Palette Helpers */
+.slot-sky {
+  background-color: #BAE6FD;
+  color: #0369A1;
+  border-color: #7DD3FC;
 }
 
-.bg-dot-matrix {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-  background-size: 20px 20px;
+.slot-lavender {
+  background-color: #DDD6FE;
+  color: #5B21B6;
+  border-color: #C4B5FD;
 }
 
-.bg-dark-horizontal-lines {
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 100% 16px;
+.slot-peach {
+  background-color: #FED7AA;
+  color: #9A3412;
+  border-color: #FDBA74;
 }
 
-/* Custom Glow Utilities */
-.glow-emerald {
-  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.4);
+.slot-rose {
+  background-color: #FECDD3;
+  color: #9F1239;
+  border-color: #FDA4AF;
 }
 
-.glow-violet {
-  box-shadow: 0 0 30px -5px rgba(139, 92, 246, 0.4);
+.slot-lemon {
+  background-color: #FEF08A;
+  color: #854D0E;
+  border-color: #FDE047;
 }
 
-.glow-amber {
-  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.4);
+.slot-mint {
+  background-color: #A7F3D0;
+  color: #065F46;
+  border-color: #6EE7B7;
 }
 
-.glow-text-emerald {
-  text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+/* Custom Soft Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.glass-card {
-  background: rgba(10, 10, 14, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+::-webkit-scrollbar-track {
+  background: #FAF7F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E8E2D2;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D1FAE5;
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
